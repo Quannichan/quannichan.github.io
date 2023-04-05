@@ -14,33 +14,23 @@ $conn = mysqli_connect(hostname:$host,
                         username:$username,
                         password:$password,
                         database:$dbname);
-
-if(mysqli_connect_errno()){
-    die("Conection error: " . mysqli_connect_errno());
-}
 $sql = "INSERT INTO Mint_Coffee.submit_mes 
         VALUES (?,?,?,?,?)";
 $stmt = mysqli_stmt_init($conn);
-
 if(! mysqli_stmt_prepare($stmt,$sql)){
     echo"Cannot send message!";
     die(mysqli_error($conn));  
 }else{
-mysqli_stmt_bind_param($stmt,"sssss",
-                        $FN,
-                        $LN,
-                        $PN,
-                        $TT,
-                        $MES);
+mysqli_stmt_bind_param($stmt,"sssss",$FN,$LN,$PN,$TT,$MES);
 mysqli_stmt_execute($stmt);
-
 ?><script>
-alert ("Thanks for your message ^.^");
+alert ("Thank you for your message ^.^");
   </script>
 <?php
 mysqli_close($conn);
    header('refresh: 1; URL='."/Mint_Coffee/HTML/file/Contact.html");
    $output = '...Redirecting to contact page, please wait!...';
+   echo $output;
 }
-echo $output ; 
+
 ?>

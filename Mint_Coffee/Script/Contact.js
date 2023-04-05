@@ -9,3 +9,10 @@ ScrollReveal().reveal('.head2',{delay: 300,origin:'top',reset:true});
 ScrollReveal().reveal('.borderform',{delay: 300 ,origin:'bottom',reset:true});
 ScrollReveal().reveal('.img2',{delay: 300,origin:'left',reset:true});
 
+function restricAlphabets(e){
+    var x = e.which || e.keycode;
+    if((x >= 48 && x<= 57))
+        return true;
+    else
+        return false;
+};
